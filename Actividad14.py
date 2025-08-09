@@ -7,6 +7,13 @@ class Persona:
         self.edad = edad
         self.categoria = categoria
 
+    def __str__(self):
+        return (f"Corsal: {self.numero_dorsal} "
+                f"Nombre del Competidor: {self.nombre}"
+                f"Edad del Competidor {self.edad} "
+                f"Inscrito en la categoria{self.categoria}")
+
+
 
 class Carrera:
     def __init__(self):
@@ -23,6 +30,24 @@ class Carrera:
                 else:
                     break
                 nombre = input("Ingrese el nombre del participante")
+                edad = int(input("Ingrese la edad del participante"))
+                categoria = input("Ingrese la categoria: (juvenil, adulto, máster")
+                self.inscrito[dorsal] = Persona(dorsal, nombre, nombre, edad, categoria)
+        except ValueError:
+            print("No se puede ingresar los datos")
+
+    def quick_sort(self, resultado):
+        if len(resultado) <= 1:
+            return resultado
+
+        pivote = resultado[0]
+        menor = [x for x in resultado if x.nombre < pivote.nombre]
+        igual = [x for x in resultado if x.nombre == pivote.nombre]
+        mayor = [x for x in resultado if x.nombre > pivote.nombre]
+
+        return self.quick_sort(menor) + igual + self.quick_sort(mayor)
+
+
 
 
 
